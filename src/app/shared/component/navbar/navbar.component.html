@@ -1,0 +1,31 @@
+<mat-toolbar class="navbar">
+    <div class="logo">
+        <span>Angular</span>
+    </div>
+    <div class="navLinks">
+        <button mat-button class="link" routerLinkActive="active" routerLink="home">Home</button>
+        <button *ngIf="userRole.includes('admin') || userRole.includes('superAdmin')" mat-button class="link"
+            routerLinkActive="active" routerLink="users">Users</button>
+        <button mat-button class="link" routerLinkActive="active" routerLink="products">Products</button>
+        <button *ngIf="userRole.includes('superAdmin')" mat-button class="link" routerLinkActive="active"
+            routerLink="fairs">Fairs</button>
+        <button mat-raised-button color="warn" (click)="onLogOut()" class="link">Log Out</button>
+
+    </div>
+    <button class="menuBtn" mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>{{!sidenav.opened?'menu':'close'}}</mat-icon>
+    </button>
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side" fixedInViewport="true">
+        <div class="sidenav">
+            <button mat-button class="link" routerLinkActive="active" routerLink="home">Home</button>
+            <button *ngIf="userRole.includes('admin') || userRole.includes('superAdmin')" mat-button class="link"
+                routerLinkActive="active" routerLink="users">Users</button>
+            <button mat-button class="link" routerLinkActive="active" routerLink="products">Products</button>
+            <button *ngIf="userRole.includes('superAdmin')" mat-button class="link" routerLinkActive="active"
+                routerLink="fairs">Fairs</button>
+            <button mat-raised-button color="warn" (click)="onLogOut()" class="link">Log Out</button>
+        </div>
+    </mat-sidenav>
+</mat-sidenav-container>

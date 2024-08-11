@@ -1,0 +1,69 @@
+<mat-card>
+    <mat-card-title align="center" class="text-capitalize">
+        {{!isInEditMode?'Add User':'Update User'}}
+    </mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+            <!-- username -->
+            <div class="controls">
+                <mat-icon class="mr-2">
+                    account_circle
+                </mat-icon>
+                <mat-form-field>
+                    <mat-label>Enter Username</mat-label>
+                    <input type="text" formControlName="userName" matInput>
+                    <mat-error>
+                        <ng-container *ngIf="controls['userName'].touched && controls['userName'].hasError('required')">
+                            Username is required field!!!
+                        </ng-container>
+                        <ng-container *ngIf="controls['userName'].dirty && controls['userName'].hasError('pattern')">
+                            Username should not include alphabetical ans special characters!!!
+                        </ng-container>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <!-- userImg -->
+            <div class="controls">
+                <mat-icon class="mr-2">
+                    image
+                </mat-icon>
+                <mat-form-field>
+                    <mat-label>Enter Image URL</mat-label>
+                    <input type="text" formControlName="userImg" matInput>
+                    <mat-error>
+                        <ng-container *ngIf="controls['userImg'].touched && controls['userImg'].hasError('required')">
+                            Image URL is required field!!!
+                        </ng-container>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <!-- Userrole -->
+            <div class="controls">
+                <mat-icon class="mr-2">
+                    admin_panel_settings
+                </mat-icon>
+                <mat-form-field class="w-50">
+                    <mat-label>Select User-Role</mat-label>
+                    <mat-select formControlName="userRole">
+                        <mat-option value="admin">Admin</mat-option>
+                        <mat-option value="buyer">Buyer</mat-option>
+                    </mat-select>
+                    <mat-error>
+                        <ng-container *ngIf="controls['userRole'].touched && controls['userRole'].hasError('required')">
+                            User-role is required field!!!
+                        </ng-container>
+
+                    </mat-error>
+                </mat-form-field>
+
+            </div>
+
+            <div class="formBtn mt-4 d-flex justify-content-between mx-4">
+                <button type="submit" [disabled]="userForm.invalid" *ngIf="!isInEditMode"  mat-raised-button color="primary">Add User</button>
+                <button type="button" (click)="onUpdate()" mat-raised-button
+                [disabled]="userForm.invalid || userRole==='buyer'" *ngIf="isInEditMode" color="primary">Update</button>
+                <button type="button" mat-raised-button (click)="onCancel()" color="warn">Cancel</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

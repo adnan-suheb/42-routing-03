@@ -1,0 +1,44 @@
+.fairDetails {
+    background-color: #fff;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6);
+    padding: 1rem;
+
+    .banner {
+        height: 300px;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+
+        }
+
+        .fairContent {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            color: #fff;
+            z-index: 1;
+            padding: 1rem;
+
+        }
+
+
+    }
+
+    .banner::after {
+        content: '';
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 0;
+        background-image: linear-gradient(90deg, #111, rgba(0, 0, 0, 0.0));
+    }
+}

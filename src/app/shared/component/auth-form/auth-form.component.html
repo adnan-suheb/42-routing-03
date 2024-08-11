@@ -1,0 +1,52 @@
+<div class="mainAuth">
+    <mat-card class="authForm">
+        <mat-card-title align="center">
+            LOGIN
+        </mat-card-title>
+        <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
+            <!-- email -->
+            <div class="controls">
+                <mat-icon class="mr-2">mail</mat-icon>
+                <mat-form-field>
+                    <mat-label>Enter Email</mat-label>
+                    <input type="text" matInput placeholder="Ex. abcd@gmail.com" formControlName="email">
+                    <mat-error>
+                        <ng-container *ngIf="controls['email'].touched && controls['email'].hasError('required')">
+                            Email is required field!!!
+                        </ng-container>
+                        <ng-container *ngIf="controls['email'].dirty && controls['email'].hasError('pattern')">
+                            Invalid email pattern!!!
+                        </ng-container>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <!-- password -->
+            <div class="controls">
+                <mat-icon class="mr-2">lock</mat-icon>
+                <mat-form-field>
+                    <mat-label>Enter Password</mat-label>
+                    <input [type]="!isVisible?'password':'text'" matInput formControlName="password">
+                    <mat-icon style="cursor: pointer;" (click)="toggleVisibility()"
+                        matSuffix>{{!isVisible?'visibility_off':'visibility'}}</mat-icon>
+                    <mat-error>
+                        <ng-container *ngIf="controls['password'].touched && controls['password'].hasError('required')">
+                            Password is required field!!!
+                        </ng-container>
+                        <ng-container *ngIf="controls['password'].dirty && controls['password'].hasError('pattern')">
+                            Password must be at least 7 characters long and include at least one lowercase letter, one
+                            uppercase letter, one digit, and one special character.
+                        </ng-container>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div align="end">
+                <button mat-raised-button color="primary">
+                    Log In
+                </button>
+            </div>
+        </form>
+        
+    </mat-card>
+</div>

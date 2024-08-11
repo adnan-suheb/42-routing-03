@@ -1,0 +1,14 @@
+<div class="fairDetails">
+    <div class="banner mb-4">
+        <img [src]="fairsObj.bannerUrl" [alt]="fairsObj.fairName" [title]="fairsObj.fairName">
+        <div class="fairContent">
+            <h3>{{fairsObj.fairName|uppercase}}</h3>
+            <p class="mb-0">Event Type : {{fairsObj.type}}</p>
+            <p class="mb-0">Event Date : {{fairsObj.startDate|date}}</p>
+        </div>
+    </div>
+
+
+    <p *ngIf="fairsObj.candidateDescription" [innerHTML]="fairsObj.candidateDescription"></p>
+    <p *ngIf="fairsObj.schoolDescription" [innerHTML]="fairsObj.schoolDescription"></p>
+</div>

@@ -1,0 +1,26 @@
+<div class="row my-5">
+    <div class="col-md-4">
+        <mat-card>
+            <mat-card-title align="center" class="text-capitalize">
+                user list
+            </mat-card-title>
+            <mat-card-content>
+                <mat-list class="userList">
+                    <mat-list-item *ngFor="let user of usersArr" class="listItem" [routerLink]="[user.userId]"
+                        [queryParams]="{userRole:user.userRole}" routerLinkActive="active">
+                        <mat-icon class="mr-2">account_circle</mat-icon>{{user.userName}}
+                        <mat-divider></mat-divider>
+                    </mat-list-item>
+                </mat-list>
+                <div class="mt-4" align="end">
+                    <button mat-fab routerLink="addUser">
+                        <mat-icon>person_add</mat-icon>
+                    </button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="col-md-8">
+        <router-outlet></router-outlet>
+    </div>
+</div>

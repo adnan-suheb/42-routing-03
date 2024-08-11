@@ -1,0 +1,34 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    background-color: grey;
+}
+.link{
+    margin: 0 5px;
+}
+
+.sidenav {
+    display: flex;
+    flex-direction: column;
+}
+
+.link.active {
+    color: orange;
+    text-decoration: underline 2px solid ;
+}
+
+@media(min-width:900px) {
+
+    .menuBtn,
+    mat-sidenav {
+        display: none;
+    }
+}
+
+@media(max-width:900px) {
+
+    .navLinks {
+        display: none;
+    }
+}
